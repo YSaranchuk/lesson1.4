@@ -1,5 +1,5 @@
 <?php
-$appid = '8a43ceeacde9e3ff1f67525b1d2de840';
+$appid = 'ef275086da6b4c2a604c04dd29f2e5dc';
 $id_default = '524894';
 if (isset($_REQUEST['city'])) {
     $city_id = $_REQUEST['city'];
