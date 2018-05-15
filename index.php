@@ -21,14 +21,14 @@ $coord_lon = $decode_api['coord']['lon'];
 $coord_lat = $decode_api['coord']['lat'];
 // Градусы
 $temp = $decode_api['main']['temp'];
-// Пересчитываем градусы
+// Пересчет
 $temp_celsius = $temp - 273;
 $temp_celsius = round($temp_celsius, 1). ' C&deg';
-// Добавляем плюсик
+// Добавляем плюс
 if ($temp_celsius > 0) {
     $temp_celsius = str_pad($temp_celsius, strlen($temp_celsius)+1, "+", STR_PAD_LEFT);
 }
-// Иконка погоды
+// Иконка 
 $icon = $decode_api['weather'][0]['icon'];
 $icon_url = 'http://openweathermap.org/img/w/' . $icon . '.png';
 ?>
