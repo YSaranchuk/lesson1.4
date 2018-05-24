@@ -9,10 +9,17 @@ if (empty($city_id)) {
 };
 $api = file_get_contents("http://api.openweathermap.org/data/2.5/weather?id=" . $city_id . "&appid=" . $appid);
 $city_list_file = file_get_contents("city.list.json");
-$decode_api = json_decode($api, true);
+$decode_api = json_decode($api, false);
 $decode_city = json_decode($city_list_file, true);
 // Город
 $city_name = $decode_api['name'];
+//Внесение правок
+if (isset($decode_api['weather'][0])) {
+    $weather_desc = $decode_api['weather'][0];
+};
+if (empty($weather_desc) {
+    $weather_desc = $decode_api['weather'][0]['description'];
+};
 // Погода
 $weather_desc = $decode_api['weather'][0]['description'];
 $pressure = $decode_api['main']['pressure'];
