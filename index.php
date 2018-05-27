@@ -9,15 +9,25 @@ if (empty($city_id)) {
 };
 $api = file_get_contents("http://api.openweathermap.org/data/2.5/weather?id=" . $city_id . "&appid=" . $appid);
 $city_list_file = file_get_contents("city.list.json");
+$api_weather_data = file_get_contents($api_query); //внесение правок
+if ($api_weather_data === false){ 
+    exit(‘Не удалось получить данные’);
+};
 $decode_api = json_decode($api, false);
+$decode_api = json_decode($api, true); // исправления , я вас праильно поняла второй параметр внести вот так?
 $decode_city = json_decode($city_list_file, true);
+$data = json_decode($json_data); 
+if ($data === null) {
+    exit(‘Ошибка декодирования json’);
+};
 // Город
 $city_name = $decode_api['name'];
+echo (!empty($json['name'])) ? $json['name'] : 'не удалось получить название города' ;
 //Внесение правок
 if (isset($decode_api['weather'][0])) {
     $weather_desc = $decode_api['weather'][0];
 };
-if (empty($weather_desc) {
+if (empty($weather_desc)) {
     $weather_desc = $decode_api['weather'][0]['description'];
 };
 // Погода
@@ -36,10 +46,9 @@ if ($temp_celsius > 0) {
     $temp_celsius = str_pad($temp_celsius, strlen($temp_celsius)+1, "+", STR_PAD_LEFT);
 }
 // Иконка 
-$icon = $decode_api['weather'][0]['icon'];
+//$icon = $decode_api['weather'][0]['icon']; исправлено
 $icon_url = 'http://openweathermap.org/img/w/' . $icon . '.png';
 ?>
-
 
 <!DOCTYPE html>
 <html lang="ru">
