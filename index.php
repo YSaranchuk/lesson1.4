@@ -1,4 +1,5 @@
 <?php
+header ("Content-Type: text/html; charset=utf-8");
 $appid = 'ef275086da6b4c2a604c04dd29f2e5dc';
 $id_default = '524894';
 if (isset($_REQUEST['city'])) {
