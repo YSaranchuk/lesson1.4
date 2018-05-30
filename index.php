@@ -15,7 +15,7 @@ if ($api === false){
 };
 $decode_api = json_decode($api, true); 
 $decode_city = json_decode($city_list_file, true);
-if ($data === null) {
+if ($decode_api === null) {
     exit('Ошибка декодирования json');
 };
 // Город
